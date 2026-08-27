@@ -33,25 +33,25 @@ private val KawaiiDayColorScheme = lightColorScheme(
     onSurfaceVariant = PinkOnSurfaceVariant,
 )
 
-private val KawaiiNightColorScheme = lightColorScheme( // Use lightColorScheme for night too but with purple tones to keep it Kawaii
-    primary = PurplePrimary,
-    onPrimary = PurpleOnPrimary,
-    primaryContainer = PurplePrimaryContainer,
-    onPrimaryContainer = PurpleOnPrimaryContainer,
-    secondary = PurpleSecondary,
-    onSecondary = PurpleOnSecondary,
-    secondaryContainer = PurpleSecondaryContainer,
-    onSecondaryContainer = PurpleOnSecondaryContainer,
-    tertiary = PurpleTertiary,
-    onTertiary = PurpleOnTertiary,
-    tertiaryContainer = PurpleTertiaryContainer,
-    onTertiaryContainer = PurpleOnTertiaryContainer,
-    background = PurpleBackground,
-    onBackground = PurpleOnBackground,
-    surface = PurpleSurface,
-    onSurface = PurpleOnSurface,
-    surfaceVariant = PurpleSurfaceVariant,
-    onSurfaceVariant = PurpleOnSurfaceVariant,
+private val DarkKawaiiColorScheme = darkColorScheme(
+    primary = DarkKawaiiPrimary,
+    onPrimary = DarkKawaiiOnPrimary,
+    primaryContainer = DarkKawaiiPrimaryContainer,
+    onPrimaryContainer = DarkKawaiiOnPrimaryContainer,
+    secondary = DarkKawaiiSecondary,
+    onSecondary = DarkKawaiiOnSecondary,
+    secondaryContainer = DarkKawaiiSecondaryContainer,
+    onSecondaryContainer = DarkKawaiiOnSecondaryContainer,
+    tertiary = DarkKawaiiTertiary,
+    onTertiary = DarkKawaiiOnTertiary,
+    tertiaryContainer = DarkKawaiiTertiaryContainer,
+    onTertiaryContainer = DarkKawaiiOnTertiaryContainer,
+    background = DarkKawaiiBackground,
+    onBackground = DarkKawaiiOnBackground,
+    surface = DarkKawaiiSurface,
+    onSurface = DarkKawaiiOnSurface,
+    surfaceVariant = DarkKawaiiSurfaceVariant,
+    onSurfaceVariant = DarkKawaiiOnSurfaceVariant,
 )
 
 @Composable
@@ -73,7 +73,7 @@ fun MyDayTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
         // Force Kawaii Night if it's night time, otherwise Kawaii Day
-        !isDayTime -> KawaiiNightColorScheme
+        !isDayTime || darkTheme -> DarkKawaiiColorScheme
         else -> KawaiiDayColorScheme
     }
 

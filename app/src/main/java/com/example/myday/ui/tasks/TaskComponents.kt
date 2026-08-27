@@ -88,7 +88,8 @@ fun KawaiiAddTaskField(
     value: String,
     onValueChange: (String) -> Unit,
     onAdd: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    placeholder: String = "Plan something cute... ✨"
 ) {
     Row(
         modifier = modifier
@@ -102,7 +103,7 @@ fun KawaiiAddTaskField(
             modifier = Modifier
                 .weight(1f)
                 .clip(RoundedCornerShape(30.dp)),
-            placeholder = { Text("Plan something cute... ✨") },
+            placeholder = { Text(placeholder) },
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f),
                 unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f),

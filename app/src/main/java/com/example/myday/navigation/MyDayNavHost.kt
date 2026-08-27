@@ -20,6 +20,11 @@ import com.example.myday.ui.SettingsScreen
 import com.example.myday.ui.TasksScreen
 import kotlinx.serialization.Serializable
 
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.example.myday.ui.LanguageViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 @Serializable
 sealed interface MyDayRoute : NavKey {
     @Serializable
@@ -31,9 +36,10 @@ sealed interface MyDayRoute : NavKey {
 }
 
 @Composable
-fun MyDayNavHost() {
+fun MyDayNavHost(languageViewModel: LanguageViewModel = viewModel()) {
     val backStack = remember { mutableStateListOf<MyDayRoute>(MyDayRoute.Home) }
     val currentKey = backStack.lastOrNull() ?: MyDayRoute.Home
+    val currentLanguage by languageViewModel.currentLanguage.collectAsState()
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
@@ -46,8 +52,8 @@ fun MyDayNavHost() {
                         backStack.add(MyDayRoute.Home)
                     }
                 },
-                icon = { Icon(Icons.Rounded.Home, contentDescription = "Home") },
-                label = { Text("Home") }
+                icon = { Icon(Icons.Rounded.Home, contentDescription = languageViewModel.getString("home_title")) },
+                label = { Text(languageViewModel.getString("home_title").replace(" ✨", "")) }
             )
             item(
                 selected = currentKey is MyDayRoute.Tasks,
@@ -59,8 +65,8 @@ fun MyDayNavHost() {
                         backStack.add(MyDayRoute.Tasks)
                     }
                 },
-                icon = { Icon(Icons.AutoMirrored.Rounded.List, contentDescription = "Tasks") },
-                label = { Text("Tasks") }
+                icon = { Icon(Icons.AutoMirrored.Rounded.List, contentDescription = languageViewModel.getString("tasks_title")) },
+                label = { Text(languageViewModel.getString("tasks_title").replace(" ✨", "")) }
             )
             item(
                 selected = currentKey is MyDayRoute.Settings,
@@ -72,8 +78,8 @@ fun MyDayNavHost() {
                         backStack.add(MyDayRoute.Settings)
                     }
                 },
-                icon = { Icon(Icons.Rounded.Settings, contentDescription = "Settings") },
-                label = { Text("Settings") }
+                icon = { Icon(Icons.Rounded.Settings, contentDescription = languageViewModel.getString("settings_title")) },
+                label = { Text(languageViewModel.getString("settings_title").replace(" ✨", "")) }
             )
         }
     ) {

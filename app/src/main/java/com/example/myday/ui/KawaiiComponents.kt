@@ -22,8 +22,10 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.myday.data.WeatherResult
 
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 @Composable
-fun KawaiiClock(time: String) {
+fun KawaiiClock(time: String, languageViewModel: LanguageViewModel = viewModel()) {
     val bubbleShape = RoundedCornerShape(40.dp)
     Card(
         modifier = Modifier
@@ -65,7 +67,7 @@ fun KawaiiClock(time: String) {
                     color = MaterialTheme.colorScheme.onPrimaryContainer
                 )
                 Text(
-                    text = "Pure Magic ✨",
+                    text = languageViewModel.getString("calendar_title") + " ✨", // Or "Pure Magic"
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
                 )
@@ -107,7 +109,7 @@ fun KawaiiCalendar(date: String) {
 }
 
 @Composable
-fun WeatherCard(weatherState: WeatherResult) {
+fun WeatherCard(weatherState: WeatherResult, languageViewModel: LanguageViewModel = viewModel()) {
     val cloudShape = RoundedCornerShape(32.dp)
     Card(
         modifier = Modifier
@@ -141,7 +143,15 @@ fun WeatherCard(weatherState: WeatherResult) {
                             .height(120.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                text = languageViewModel.getString("weather_loading"),
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
                     }
                 }
                 is WeatherResult.Success -> {
@@ -170,7 +180,7 @@ fun WeatherCard(weatherState: WeatherResult) {
                             }
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "${data.temperature.toInt()}°",
+                                text = "${data.temperature.toInt()}${languageViewModel.getString("temp_unit")}",
                                 style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.ExtraBold),
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -198,7 +208,7 @@ fun WeatherCard(weatherState: WeatherResult) {
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Magic is sleeping... ☁️",
+                            text = languageViewModel.getString("weather_error"),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.error
                         )
