@@ -92,9 +92,9 @@ fun MyDayNavHost(languageViewModel: LanguageViewModel = viewModel()) {
             ),
             entryProvider = { key ->
                 when (key) {
-                    is MyDayRoute.Home -> NavEntry(key) { HomeScreen() }
-                    is MyDayRoute.Tasks -> NavEntry(key) { TasksScreen() }
-                    is MyDayRoute.Settings -> NavEntry(key) { SettingsScreen() }
+                    is MyDayRoute.Home -> NavEntry(key) { HomeScreen(languageViewModel = languageViewModel) }
+                    is MyDayRoute.Tasks -> NavEntry(key) { TasksScreen(languageViewModel = languageViewModel) }
+                    is MyDayRoute.Settings -> NavEntry(key) { SettingsScreen(languageViewModel = languageViewModel) }
                 }
             }
         )

@@ -25,7 +25,12 @@ import com.example.myday.data.WeatherResult
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun KawaiiClock(time: String, languageViewModel: LanguageViewModel = viewModel()) {
+fun KawaiiClock(
+    time: String,
+    dayOfWeek: String,
+    date: String,
+    languageViewModel: LanguageViewModel = viewModel()
+) {
     val bubbleShape = RoundedCornerShape(40.dp)
     Card(
         modifier = Modifier
@@ -48,29 +53,62 @@ fun KawaiiClock(time: String, languageViewModel: LanguageViewModel = viewModel()
                         )
                     )
                 )
-                .padding(32.dp),
+                .padding(24.dp),
             contentAlignment = Alignment.Center
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
-                    modifier = Modifier.size(24.dp)
-                )
-                Text(
-                    text = time,
-                    style = MaterialTheme.typography.displayLarge.copy(
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 2.sp
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                // Clock
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = time,
+                        style = MaterialTheme.typography.displayMedium.copy(
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 1.sp
+                        ),
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+
+                // Mini Calendar
+                Card(
+                    shape = RoundedCornerShape(24.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
                     ),
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                )
-                Text(
-                    text = languageViewModel.getString("calendar_title") + " ✨", // Or "Pure Magic"
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
-                )
+                    modifier = Modifier.shadow(4.dp, RoundedCornerShape(24.dp))
+                ) {
+                    Column(
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = dayOfWeek,
+                            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            text = date,
+                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Icon(
+                            Icons.Rounded.Favorite,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
+                            modifier = Modifier.size(12.dp)
+                        )
+                    }
+                }
             }
         }
     }

@@ -46,16 +46,28 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.font.FontWeight
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @Composable
 fun HomeScreen(
-    viewModel: WeatherViewModel = viewModel(),
+    weatherViewModel: WeatherViewModel = viewModel(),
     languageViewModel: LanguageViewModel = viewModel()
 ) {
-    val weatherState by viewModel.weatherState.collectAsState()
-    val formattedTime by viewModel.formattedTime.collectAsState()
-    val formattedDate by viewModel.formattedDate.collectAsState()
+    val weatherState by weatherViewModel.weatherState.collectAsState()
+    val currentTime by weatherViewModel.currentTime.collectAsState()
     val currentLanguage by languageViewModel.currentLanguage.collectAsState()
+    val locale = languageViewModel.getLocale()
+
+    val formattedTime = remember(currentTime, locale) {
+        SimpleDateFormat("HH:mm", locale).format(currentTime)
+    }
+    val formattedDay = remember(currentTime, locale) {
+        SimpleDateFormat("EEEE", locale).format(currentTime).replaceFirstChar { it.uppercase() }
+    }
+    val formattedDate = remember(currentTime, locale) {
+        SimpleDateFormat("d MMM", locale).format(currentTime)
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -97,11 +109,14 @@ fun HomeScreen(
                     .padding(top = 32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                KawaiiCalendar(date = formattedDate)
-                Spacer(modifier = Modifier.height(8.dp))
-                KawaiiClock(time = formattedTime)
+                KawaiiClock(
+                    time = formattedTime,
+                    dayOfWeek = formattedDay,
+                    date = formattedDate,
+                    languageViewModel = languageViewModel
+                )
                 Spacer(modifier = Modifier.height(16.dp))
-                WeatherCard(weatherState = weatherState)
+                WeatherCard(weatherState = weatherState, languageViewModel = languageViewModel)
 
                 Spacer(modifier = Modifier.weight(1f))
                 

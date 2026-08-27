@@ -24,6 +24,7 @@ class WeatherViewModel(
     val weatherState: StateFlow<WeatherResult> = _weatherState.asStateFlow()
 
     private val _currentTime = MutableStateFlow(Date())
+    val currentTime: StateFlow<Date> = _currentTime.asStateFlow()
     
     val formattedTime: StateFlow<String> = _currentTime.map {
         SimpleDateFormat("HH:mm", Locale.getDefault()).format(it)

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.Locale
 
 enum class AppLanguage(val code: String, val label: String) {
     PT("PT", "Português"),
@@ -63,5 +64,13 @@ class LanguageViewModel : ViewModel() {
 
     fun getString(key: String): String {
         return translations[_currentLanguage.value]?.get(key) ?: key
+    }
+
+    fun getLocale(): Locale {
+        return when (_currentLanguage.value) {
+            AppLanguage.PT -> Locale.forLanguageTag("pt-BR")
+            AppLanguage.ES -> Locale.forLanguageTag("es-ES")
+            else -> Locale.ENGLISH
+        }
     }
 }
