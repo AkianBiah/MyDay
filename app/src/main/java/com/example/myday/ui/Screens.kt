@@ -1,5 +1,6 @@
 package com.example.myday.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,9 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myday.ui.tasks.KawaiiAddTaskField
@@ -38,27 +44,58 @@ fun HomeScreen(viewModel: WeatherViewModel = viewModel()) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
     ) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
+                        )
+                    )
+                )
                 .padding(innerPadding)
-                .padding(top = 32.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            KawaiiCalendar(date = formattedDate)
-            Spacer(modifier = Modifier.height(8.dp))
-            KawaiiClock(time = formattedTime)
-            Spacer(modifier = Modifier.height(16.dp))
-            WeatherCard(weatherState = weatherState)
-
-            Spacer(modifier = Modifier.weight(1f))
-            
-            Text(
-                text = "Have a magical day! ✨",
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
-                modifier = Modifier.padding(bottom = 32.dp)
+            // Decorative stars
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                modifier = Modifier
+                    .padding(32.dp)
+                    .align(Alignment.TopStart)
             )
+            Icon(
+                Icons.Rounded.Favorite,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f),
+                modifier = Modifier
+                    .padding(32.dp)
+                    .align(Alignment.BottomEnd)
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                KawaiiCalendar(date = formattedDate)
+                Spacer(modifier = Modifier.height(8.dp))
+                KawaiiClock(time = formattedTime)
+                Spacer(modifier = Modifier.height(16.dp))
+                WeatherCard(weatherState = weatherState)
+
+                Spacer(modifier = Modifier.weight(1f))
+                
+                Text(
+                    text = "Have a magical day! ✨",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
+                    modifier = Modifier.padding(bottom = 32.dp)
+                )
+            }
         }
     }
 }
@@ -70,43 +107,55 @@ fun TasksScreen(viewModel: TaskViewModel = viewModel()) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Spacer(modifier = Modifier.height(32.dp))
-                Text(
-                    text = "My Tasks ✨",
-                    style = MaterialTheme.typography.headlineLarge,
-                    color = MaterialTheme.colorScheme.primary
-                )
-            }
-        }
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.1f),
+                            MaterialTheme.colorScheme.background
+                        )
+                    )
+                )
                 .padding(innerPadding)
         ) {
-            KawaiiAddTaskField(
-                value = newTaskDescription,
-                onValueChange = { newTaskDescription = it },
-                onAdd = {
-                    viewModel.addTask(newTaskDescription)
-                    newTaskDescription = ""
-                }
-            )
-
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                contentPadding = PaddingValues(bottom = 16.dp)
+            Column(
+                modifier = Modifier.fillMaxSize()
             ) {
-                items(tasks, key = { it.id }) { task ->
-                    KawaiiTaskItem(
-                        task = task,
-                        onToggle = { viewModel.toggleTaskCompletion(task.id) },
-                        onDelete = { viewModel.deleteTask(task.id) }
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Spacer(modifier = Modifier.height(32.dp))
+                    Text(
+                        text = "My Tasks ✨",
+                        style = MaterialTheme.typography.headlineLarge,
+                        color = MaterialTheme.colorScheme.primary
                     )
+                }
+
+                KawaiiAddTaskField(
+                    value = newTaskDescription,
+                    onValueChange = { newTaskDescription = it },
+                    onAdd = {
+                        viewModel.addTask(newTaskDescription)
+                        newTaskDescription = ""
+                    }
+                )
+
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    contentPadding = PaddingValues(bottom = 16.dp)
+                ) {
+                    items(tasks, key = { it.id }) { task ->
+                        KawaiiTaskItem(
+                            task = task,
+                            onToggle = { viewModel.toggleTaskCompletion(task.id) },
+                            onDelete = { viewModel.deleteTask(task.id) }
+                        )
+                    }
                 }
             }
         }

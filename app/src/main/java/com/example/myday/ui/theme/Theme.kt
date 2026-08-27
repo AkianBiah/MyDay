@@ -29,9 +29,11 @@ private val KawaiiDayColorScheme = lightColorScheme(
     onBackground = PinkOnBackground,
     surface = PinkSurface,
     onSurface = PinkOnSurface,
+    surfaceVariant = PinkSurfaceVariant,
+    onSurfaceVariant = PinkOnSurfaceVariant,
 )
 
-private val KawaiiNightColorScheme = darkColorScheme(
+private val KawaiiNightColorScheme = lightColorScheme( // Use lightColorScheme for night too but with purple tones to keep it Kawaii
     primary = PurplePrimary,
     onPrimary = PurpleOnPrimary,
     primaryContainer = PurplePrimaryContainer,
@@ -48,6 +50,8 @@ private val KawaiiNightColorScheme = darkColorScheme(
     onBackground = PurpleOnBackground,
     surface = PurpleSurface,
     onSurface = PurpleOnSurface,
+    surfaceVariant = PurpleSurfaceVariant,
+    onSurfaceVariant = PurpleOnSurfaceVariant,
 )
 
 @Composable
