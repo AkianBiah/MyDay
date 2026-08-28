@@ -13,7 +13,7 @@ Este projeto foi concebido sob uma filosofia de modernização técnica sem abdi
 > **Modernização com Jetpack Compose:** A camada de interface de usuário (UI) utiliza **Jetpack Compose** e **Kotlin**, utilizando **Navigation 3** para um fluxo de telas moderno e eficiente.
 
 ## 🌟 Funcionalidades Principais
-- 🎨 **Bianca Style UI:** Interface com tons pastéis, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos encantadores.
+- 🎨 **Style UI:** Interface com tons pastéis, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos encantadores.
 - 🌅 **Céu Ilustrado Dinâmico:** Fundo que se adapta ao horário do dia:
     - **Dia:** Sol e nuvens suaves.
     - **Noite:** Lua e estrelas cintilantes.
