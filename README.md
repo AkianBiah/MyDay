@@ -1,43 +1,86 @@
 # 🌌 My Day - Celestial Alarm System 🌌
 
-## 📑 Resumo do Projeto
-O **My Day** evoluiu de um simples gerenciador de tarefas para um **Sistema de Alarme Celestial** sofisticado para Android. Com uma estética Roxo Escuro e Místico, a aplicação foca em rotinas avançadas e despertar personalizado, integrando o ciclo solar e lunar diretamente na experiência do usuário.
-
-## 🏛 Decisão Arquitetural: Alarme e Rotinas
-O projeto utiliza componentes fundamentais do ecossistema Android para garantir precisão e confiabilidade nos despertadores.
-
-> [!IMPORTANT]
-> **Gestão de Alarmes de Sistema:** O My Day utiliza o `AlarmManager` para agendar despertadores precisos que funcionam mesmo quando o app está em segundo plano, coordenados por `BroadcastReceiver` para disparar notificações e áudios no momento exato.
-
-> [!NOTE]
-> **Modernização com Jetpack Compose & Room:** A interface é 100% **Jetpack Compose**, enquanto o armazenamento de rotinas e configurações é gerenciado via **Room Database**, garantindo persistência robusta.
-
-## 🌟 Funcionalidades Principais
-- 🎨 **Style UI:** Interface encantadora com tons pastéis e místicos, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos.
-- ⏰ **Relógio Celestial Dinâmico:** Exibição do tempo no formato **12h (AM/PM)** com transições visuais que se adaptam ao horário:
-    - **Dia:** Sol radiante e nuvens suaves.
-    - **Noite:** Lua mística e estrelas cintilantes.
-- 📅 **Gestão de Rotinas e Alarmes:**
-    - Criação, edição e exclusão de rotinas personalizadas.
-    - Lógica de agendamento inteligente via `AlarmManager`, incluindo a opção **"Weekend Only"** (Apenas Fins de Semana).
-- 🔔 **Notificações e Áudio:** Sistema de alerta sonoro e notificações integradas para garantir o cumprimento das rotinas.
-- ✅ **Gestão de Tarefas:** Operações CRUD completas para atividades diárias com feedback visual.
-- ☁️ **Clima em Tempo Real:** Integração com APIs meteorológicas via Retrofit para dados precisos.
-- 🌐 **Multi-idioma:** Suporte nativo para Português (PT), Inglês (EN) e Espanhol (ES).
-
-## 🛠 Especificações Técnicas
-- **Ambiente:** Android Studio Ladybug+.
-- **Arquitetura:** MVVM (Model-View-ViewModel).
-- **Persistência:** Room Database.
-- **Serviços de Sistema:** AlarmManager & BroadcastReceivers.
-- **Navegação:** Jetpack Navigation 3.
-- **UI:** Jetpack Compose com Motion Graphics.
-
-## 🚀 Instruções de Execução
-1. Importar o projeto no **Android Studio**.
-2. Sincronizar os arquivos do **Gradle**.
-3. Adicionar as permissões de `SCHEDULE_EXACT_ALARM` se necessário.
-4. Compilar e executar o módulo `:app` (API 31+ recomendado).
+Transforme sua rotina em uma jornada mística. O **My Day** não é apenas um despertador; é o seu guia celestial diário, projetado para harmonizar suas tarefas com o ritmo do cosmos.
 
 ---
-*Desenvolvido com magia e rigor técnico por Bianca.*
+
+## 📑 Sobre o Projeto
+O **My Day** nasceu da necessidade de transformar o ato de acordar e gerenciar tarefas em algo encantador. Abandonando as interfaces genéricas, ele adota o **"Bianca Style"**: uma estética mística e profunda em tons de roxo, com elementos celestiais que se transformam ao longo do dia.
+
+O coração do app é o seu **Sistema de Alarme Celestial**, que utiliza tecnologias nativas do Android para garantir que você nunca perca o ritmo, seja para tomar um remédio, começar sua leitura diária ou simplesmente despertar para um novo dia.
+
+---
+
+## 🌟 Funcionalidades Mágicas
+
+### ⏰ Relógio Celestial Dinâmico
+Sua tela inicial respira com o tempo. O relógio interativo muda visualmente de acordo com o horário:
+- **Ciclo Solar (AM):** Tons quentes, sol radiante e nuvens suaves para energizar sua manhã.
+- **Ciclo Lunar (PM):** Tons de roxo profundo, lua mística e estrelas cintilantes para acalmar sua noite.
+
+### 📅 Gestão de Rotinas Inteligentes
+Vá além das listas de tarefas comuns:
+- **Agendamento Avançado:** Configure rotinas com a opção "Apenas Fins de Semana" ou repetições diárias.
+- **Feedback Visual:** Conclua tarefas e veja o app celebrar com você através de efeitos de partículas (Sparkles).
+- **Alarmes de Sistema:** Integração profunda com o `AlarmManager` para precisão absoluta, mesmo com o app fechado.
+
+### ☁️ Previsão do Tempo Mística
+Saiba se as estrelas estarão visíveis ou se as nuvens dominam o céu. Integração em tempo real com dados meteorológicos para planejar seu dia com precisão.
+
+### 🎨 Design "Bianca Style"
+- **UI Encantadora:** Floating Cards com sombras suaves e bordas arredondadas (32dp).
+- **Stickers Animados:** Elementos celestiais que trazem vida e personalidade à interface.
+- **Experiência Fluida:** Navegação moderna e gestos intuitivos.
+
+### 🌐 Conexão Global
+O My Day fala a sua língua. Suporte completo para:
+- 🇧🇷 Português
+- 🇺🇸 Inglês
+- 🇪🇸 Espanhol
+
+---
+
+## 🔌 Conectividade e APIs
+
+Para fornecer uma experiência dinâmica e robusta, o My Day se conecta às seguintes tecnologias e serviços:
+
+- **[OpenWeatherMap API](https://openweathermap.org/api):** A fonte mística dos dados meteorológicos em tempo real, fornecendo temperatura, condições e ícones dinâmicos.
+- **[Retrofit 2](https://square.github.io/retrofit/):** O cliente HTTP responsável por orquestrar a comunicação com a API de clima de forma eficiente e segura.
+- **[Moshi](https://github.com/square/moshi):** O conversor JSON de última geração que traduz as respostas da web para objetos Kotlin compreensíveis pelo app.
+- **[Coil (Compose)](https://coil-kt.github.io/coil/compose/):** A biblioteca de carregamento de imagens rápida e leve, utilizada para exibir os ícones celestiais do clima.
+- **Android System APIs:**
+    - **AlarmManager:** Para agendamentos de alta precisão.
+    - **NotificationManager:** Para alertas e comunicações com o usuário.
+    - **BroadcastReceiver:** Para reagir a eventos do sistema, como o reinício do dispositivo.
+
+---
+
+## 🛠 Especificações Técnicas
+
+O My Day foi construído com o que há de mais moderno no desenvolvimento Android nativo:
+
+- **Linguagem:** Kotlin 100%
+- **Interface:** Jetpack Compose (Declarativa e Reativa)
+- **Arquitetura:** MVVM (Model-View-ViewModel) para separação clara de responsabilidades.
+- **Banco de Dados:** Room Database para persistência offline robusta.
+- **Navegação:** Jetpack Navigation 3 (a versão mais recente da biblioteca).
+- **Rede:** Retrofit + Moshi para consumo de APIs externas.
+- **Serviços de Sistema:** AlarmManager, BroadcastReceivers e Notificações Customizadas.
+
+---
+
+## 🚀 Como Executar a Magia
+
+1.  Clone este repositório.
+2.  Abra no **Android Studio Ladybug (2024.2.1)** ou superior.
+3.  Sincronize o projeto com o **Gradle**.
+4.  (Opcional) Adicione sua API Key do OpenWeather no arquivo `local.properties`.
+5.  Execute no seu dispositivo ou emulador (Recomendado API 31+).
+
+---
+
+## 🌙 Créditos
+Desenvolvido com paixão, magia e rigor técnico por **Bianca**. ✨
+
+---
+*"Que suas estrelas guiem seus passos e seus alarmes despertem seus sonhos."*
