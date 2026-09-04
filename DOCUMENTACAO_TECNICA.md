@@ -13,11 +13,13 @@ O aplicativo segue o padrão **MVVM**, expandido para lidar com serviços de sis
     - **AlarmManager:** Responsável pelo agendamento de eventos no sistema Android.
     - **BroadcastReceiver:** Escuta os gatilhos do sistema para iniciar notificações de áudio e atualizações de estado.
 
-## 3. Escolhas de Design 
-A interface foi reformulada para o "Style Místico":
-- **Paleta de Cores:** Foco em **Roxo Escuro** e tons de violeta, criando um ambiente noturno/celestial relaxante.
-- **Floating Cards & Glassmorphism:** Cards com bordas arredondadas (32dp) e leve transparência que flutuam sobre o fundo animado.
-- **Relógio Celestial:** O centro da experiência, alternando entre ícones de Sol (AM) e Lua (PM) conforme o horário, reforçando a conexão com o ciclo natural.
+## 3. Escolhas de Design (Bianca Style)
+A interface foi projetada sob a estética "Bianca Style", que une sofisticação e misticismo:
+- **Paleta de Cores (Dualidade Celestial):**
+    - **Modo Dia (Rose Quartz):** Utiliza tons de quartzo rosa e pastéis, transmitindo suavidade e clareza.
+    - **Modo Noite (Amethyst & Midnight):** Foca em tons de ametista, violeta e preto profundo, criando uma atmosfera mística e relaxante.
+- **Floating Cards & Glassmorphism:** Elementos de interface com bordas arredondadas (32dp) e transparências que criam um efeito de profundidade, assemelhando-se a vidros flutuantes.
+- **Relógio Celestial:** O ponto focal da aplicação, que alterna entre o Sol (AM) e a Lua (PM) com gradientes dinâmicos que acompanham o ciclo natural do tempo.
 
 ## 4. Tecnologias Utilizadas
 - **Kotlin:** Linguagem base para toda a lógica e UI.
@@ -32,7 +34,7 @@ A interface foi reformulada para o "Style Místico":
 O sistema permite uma configuração granular das rotinas:
 - **CRUD de Rotinas:** Possibilidade de criar, editar e agora **excluir** rotinas existentes.
 - **Lógica Temporal:** Suporte ao formato 12h (AM/PM) em toda a aplicação.
-- **Agendamento Inteligente:** Implementação de filtros como "Weekend Only", permitindo que o usuário defina alarmes específicos para sábados e domingos de forma simples.
+- **Agendamento Inteligente:** Implementação de filtros como "Weekend Only", permitindo que o usuário define alarmes específicos para sábados e domingos de forma simples.
 
 ## 6. Processo de Desenvolvimento
 1. **Transição de Escopo:** Migração de "Tarefas" para "Alarmes" como núcleo do app.
@@ -41,6 +43,18 @@ O sistema permite uma configuração granular das rotinas:
 4. **Refatoração Visual:** Implementação do tema Roxo Escuro e componentes de vidro (Glassmorphism).
 5. **Lógica AM/PM:** Ajuste do relógio central e seletores de horário para o padrão 12h.
 6. **Polimento:** Adição de stickers animados e efeitos sonoros para os alarmes ativos.
+
+## 7. Compatibilidade de Dispositivos
+Para garantir a melhor experiência e segurança, o My Day possui as seguintes especificações de compatibilidade:
+
+- **Versão Mínima do Android:** Android 7.0 (API nível 24 - Nougat) ou superior.
+- **Versão Alvo (Target):** Otimizado para Android 15 (API nível 37).
+- **Tipos de Dispositivo:**
+    - **Smartphones:** Interface responsiva adaptada para diversos tamanhos de tela.
+    - **Tablets:** Layout adaptável que aproveita o espaço adicional para exibir os "Floating Cards" de forma organizada.
+- **Requisitos de Sistema:**
+    - Suporte a `SCHEDULE_EXACT_ALARM` para despertar com precisão.
+    - Conexão com a Internet (apenas para a funcionalidade de clima em tempo real).
 
 ---
 *Este documento reflete a versão "Celestial Alarm" do projeto My Day.*

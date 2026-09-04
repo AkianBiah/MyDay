@@ -31,7 +31,7 @@ O desenvolvimento do My Day seguiu um ciclo iterativo de modernização:
 
 1.  **Fase de Fundação:** Inicialmente concebido como um gestor de tarefas simples, o projeto estabeleceu a base com Kotlin e Room.
 2.  **Pivô de Escopo (Sistema Celestial):** Identificamos que a "mágica" do app residia no despertar. O foco mudou para alarmes, introduzindo o `AlarmManager`.
-3.  **Refatoração Bianca Style:** A UI foi completamente redesenhada para adotar tons de roxo profundo e elementos celestiais dinâmicos (Sol/Lua).
+3.  **Refatoração Bianca Style:** A UI foi completamente redesenhada para adotar a dualidade celestial: tons de **Rose Quartz** (pastéis) durante o dia e **Amethyst/Midnight** (roxo profundo) durante a noite, com elementos dinâmicos (Sol/Lua).
 4.  **Estabilização Técnica:** Implementação de uma `ViewModelFactory` manual para gerenciar dependências sem a sobrecarga de frameworks de DI (Dependency Injection) mais pesados, mantendo o projeto leve e didático.
 
 ---
