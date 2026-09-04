@@ -1,43 +1,46 @@
-# 📚 Documentação Técnica - My Day
+# 📚 Documentação Técnica - My Day (Celestial Alarm)
 
 ## 1. Introdução
-O **My Day** é um assistente pessoal projetado para transformar a organização diária em uma experiência visualmente agradável e tecnicamente robusta. O objetivo principal é fornecer uma ferramenta de produtividade que integre tarefas, calendário e informações climáticas em um único ecossistema intuitivo, utilizando as tecnologias mais recentes do desenvolvimento Android.
+O **My Day** é um Sistema de Alarme Celestial projetado para transformar a rotina de despertar em uma experiência mística e eficiente. Ao contrário de apps de tarefas convencionais, o My Day foca na gestão de tempo através de alarmes precisos e rotinas inteligentes, utilizando uma interface expressiva e componentes de sistema de baixo nível para máxima confiabilidade.
 
 ## 2. Arquitetura do Sistema
-O aplicativo segue o padrão arquitetural **MVVM (Model-View-ViewModel)**, garantindo a separação de responsabilidades e facilitando a testabilidade e manutenção.
+O aplicativo segue o padrão **MVVM**, expandido para lidar com serviços de sistema e persistência local.
 
-- **View (Jetpack Compose):** Interface declarativa que reage às mudanças de estado.
-- **ViewModel:** Gerencia o estado da UI e a lógica de negócio, sobrevivendo a mudanças de configuração.
-- **Model:** Camada de dados que inclui repositórios e serviços de rede.
-- **Navigation 3:** Utilizado para gerenciar a navegação entre telas de forma escalável e tipada.
+- **View (Jetpack Compose):** UI declarativa que utiliza animações fluidas e temas dinâmicos baseados no formato 12h.
+- **ViewModel:** Orquestra a lógica de alarmes, conversão de horários (AM/PM) e estados da UI.
+- **Model (Room):** Banco de dados SQLite para armazenamento de rotinas, dias da semana e preferências.
+- **System Services:** 
+    - **AlarmManager:** Responsável pelo agendamento de eventos no sistema Android.
+    - **BroadcastReceiver:** Escuta os gatilhos do sistema para iniciar notificações de áudio e atualizações de estado.
 
 ## 3. Escolhas de Design (Bianca Style)
-A interface foi construída seguindo a estética **Kawaii**, caracterizada por:
-- **Paleta de Cores:** Uso predominante de tons pastéis (lavanda, rosa suave, azul céu).
-- **Floating Cards:** Componentes de interface com cantos arredondados (32dp) e sombras suaves que dão a sensação de profundidade e leveza.
-- **Temas Dinâmicos (Dia/Noite):** O app detecta o horário do sistema para alternar o fundo ilustrado:
-    - **Modo Dia:** Ilustrações de Sol e nuvens flutuantes.
-    - **Modo Noite:** Ilustrações de Lua e estrelas brilhantes.
+A interface foi reformulada para o "Bianca Style Místico":
+- **Paleta de Cores:** Foco em **Roxo Escuro** e tons de violeta, criando um ambiente noturno/celestial relaxante.
+- **Floating Cards & Glassmorphism:** Cards com bordas arredondadas (32dp) e leve transparência que flutuam sobre o fundo animado.
+- **Relógio Celestial:** O centro da experiência, alternando entre ícones de Sol (AM) e Lua (PM) conforme o horário, reforçando a conexão com o ciclo natural.
 
 ## 4. Tecnologias Utilizadas
-- **Kotlin:** Linguagem principal para toda a lógica de aplicação e interface.
-- **Jetpack Compose:** Framework moderno para construção de UI nativa.
-- **Navigation 3:** A evolução do sistema de navegação Android para Compose.
-- **Retrofit:** Biblioteca para consumo da API de clima, tratando requisições HTTP de forma eficiente.
-- **Coroutines & StateFlow:** Utilizados para operações assíncronas, como a atualização do relógio em tempo real e o carregamento de dados climáticos sem bloquear a thread principal.
-- **Coil:** Carregamento de imagens e ícones meteorológicos de forma assíncrona.
+- **Kotlin:** Linguagem base para toda a lógica e UI.
+- **Jetpack Compose:** Framework para construção de interface moderna.
+- **Room Persistence:** Para gerenciamento local de rotinas e alarmes.
+- **AlarmManager API:** Para agendamento exato de notificações e despertadores.
+- **BroadcastReceivers:** Para interceptar alarmes e gerenciar notificações de áudio em background.
+- **Navigation 3:** Gerenciamento de navegação entre Home, Rotinas e Clima.
+- **Coroutines & StateFlow:** Gerenciamento de fluxos de dados assíncronos e reatividade da UI.
 
-## 5. Interoperabilidade e Requisitos Acadêmicos
-Para atender aos requisitos de proficiência em linguagens clássicas, o projeto mantém a classe `Task.java` no pacote `com.example.myday.model.java`. 
-- **Por que Java?** Demonstra que o sistema é capaz de integrar modelos de dados legados ou bibliotecas Java existentes, garantindo que o núcleo da lógica de negócio possa ser compartilhado entre diferentes módulos se necessário.
+## 5. Gestão de Rotinas
+O sistema permite uma configuração granular das rotinas:
+- **CRUD de Rotinas:** Possibilidade de criar, editar e agora **excluir** rotinas existentes.
+- **Lógica Temporal:** Suporte ao formato 12h (AM/PM) em toda a aplicação.
+- **Agendamento Inteligente:** Implementação de filtros como "Weekend Only", permitindo que o usuário defina alarmes específicos para sábados e domingos de forma simples.
 
 ## 6. Processo de Desenvolvimento
-1. **Planejamento:** Definição das funcionalidades core (Tarefas e Clima).
-2. **Design UI:** Criação do "Bianca Style" e prototipagem dos componentes Kawaii.
-3. **Estruturação Base:** Configuração do Navigation 3 e injeção de dependência via ViewModels.
-4. **Implementação de Recursos:** Desenvolvimento das telas de CRUD de tarefas, integração com API de Clima e sistema de idiomas.
-5. **Refinamento:** Adição dos efeitos dinâmicos de fundo e polimento visual dos cards.
-6. **Documentação:** Criação deste guia técnico e atualização do README para entrega final.
+1. **Transição de Escopo:** Migração de "Tarefas" para "Alarmes" como núcleo do app.
+2. **Implementação do Room:** Estruturação das entidades de `Routine` e `Alarm`.
+3. **Integração com Sistema:** Configuração do `AlarmManager` e permissões de alarmes exatos.
+4. **Refatoração Visual:** Implementação do tema Roxo Escuro e componentes de vidro (Glassmorphism).
+5. **Lógica AM/PM:** Ajuste do relógio central e seletores de horário para o padrão 12h.
+6. **Polimento:** Adição de stickers animados e efeitos sonoros para os alarmes ativos.
 
 ---
-*Este documento serve como guia para desenvolvedores e revisores técnicos do projeto My Day.*
+*Este documento reflete a versão "Celestial Alarm" do projeto My Day.*

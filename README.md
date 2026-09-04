@@ -1,38 +1,43 @@
-# 🌸 My Day - Sistema de Gerenciamento de Tarefas 🌸
+# 🌌 My Day - Celestial Alarm System 🌌
 
 ## 📑 Resumo do Projeto
-O **My Day** é uma aplicação móvel profissional desenvolvida para a plataforma Android, projetada para otimizar a organização diária com uma estética "Kawaii" refinada (Bianca Style). A aplicação integra funcionalidades de produtividade, acompanhamento temporal e dados meteorológicos em tempo real, agora com suporte multi-idioma e interface dinâmica.
+O **My Day** evoluiu de um simples gerenciador de tarefas para um **Sistema de Alarme Celestial** sofisticado para Android. Com uma estética "Bianca Style" (Roxo Escuro e Místico), a aplicação foca em rotinas avançadas e despertar personalizado, integrando o ciclo solar e lunar diretamente na experiência do usuário.
 
-## 🏛 Decisão Arquitetural: Evolução Java para Kotlin/Compose
-Este projeto foi concebido sob uma filosofia de modernização técnica sem abdicar das bases fundamentais da engenharia de software Android.
+## 🏛 Decisão Arquitetural: Alarme e Rotinas
+O projeto utiliza componentes fundamentais do ecossistema Android para garantir precisão e confiabilidade nos despertadores.
 
 > [!IMPORTANT]
-> **Interoperabilidade Java-Kotlin:** O projeto demonstra proficiência na linguagem **Java** através da implementação de modelos de dados nativos na classe [Task.java](file:///C:/Users/Usuário/AndroidStudioProjects/MyDay/app/src/main/java/com/example/myday/model/java/Task.java). Esta abordagem atende requisitos acadêmicos e prova a plena compatibilidade do sistema com componentes Java legados ou corporativos.
+> **Gestão de Alarmes de Sistema:** O My Day utiliza o `AlarmManager` para agendar despertadores precisos que funcionam mesmo quando o app está em segundo plano, coordenados por `BroadcastReceiver` para disparar notificações e áudios no momento exato.
 
 > [!NOTE]
-> **Modernização com Jetpack Compose:** A camada de interface de usuário (UI) utiliza **Jetpack Compose** e **Kotlin**, utilizando **Navigation 3** para um fluxo de telas moderno e eficiente.
+> **Modernização com Jetpack Compose & Room:** A interface é 100% **Jetpack Compose**, enquanto o armazenamento de rotinas e configurações é gerenciado via **Room Database**, garantindo persistência robusta.
 
 ## 🌟 Funcionalidades Principais
-- 🎨 **Style UI:** Interface com tons pastéis, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos encantadores.
-- 🌅 **Céu Ilustrado Dinâmico:** Fundo que se adapta ao horário do dia:
-    - **Dia:** Sol e nuvens suaves.
-    - **Noite:** Lua e estrelas cintilantes.
-- 🧭 **Navegação Estruturada:** Divisão clara entre tela de Início (Home), Gestão de Tarefas (Tasks), Clima (Weather) e Calendário.
+- 🎨 **Bianca Style UI:** Interface encantadora com tons pastéis e místicos, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos.
+- ⏰ **Relógio Celestial Dinâmico:** Exibição do tempo no formato **12h (AM/PM)** com transições visuais que se adaptam ao horário:
+    - **Dia:** Sol radiante e nuvens suaves.
+    - **Noite:** Lua mística e estrelas cintilantes.
+- 📅 **Gestão de Rotinas e Alarmes:**
+    - Criação, edição e exclusão de rotinas personalizadas.
+    - Lógica de agendamento inteligente via `AlarmManager`, incluindo a opção **"Weekend Only"** (Apenas Fins de Semana).
+- 🔔 **Notificações e Áudio:** Sistema de alerta sonoro e notificações integradas para garantir o cumprimento das rotinas.
 - ✅ **Gestão de Tarefas:** Operações CRUD completas para atividades diárias com feedback visual.
-- ☁️ **Clima em Tempo Real:** Consumo de API via Retrofit para dados meteorológicos precisos.
+- ☁️ **Clima em Tempo Real:** Integração com APIs meteorológicas via Retrofit para dados precisos.
 - 🌐 **Multi-idioma:** Suporte nativo para Português (PT), Inglês (EN) e Espanhol (ES).
 
 ## 🛠 Especificações Técnicas
 - **Ambiente:** Android Studio Ladybug+.
 - **Arquitetura:** MVVM (Model-View-ViewModel).
+- **Persistência:** Room Database.
+- **Serviços de Sistema:** AlarmManager & BroadcastReceivers.
 - **Navegação:** Jetpack Navigation 3.
-- **Async:** Kotlin Coroutines & StateFlow.
-- **Network:** Retrofit & Coil (Imagens).
+- **UI:** Jetpack Compose com Motion Graphics.
 
 ## 🚀 Instruções de Execução
 1. Importar o projeto no **Android Studio**.
 2. Sincronizar os arquivos do **Gradle**.
-3. Compilar e executar o módulo `:app` (API 31+ recomendado).
+3. Adicionar as permissões de `SCHEDULE_EXACT_ALARM` se necessário.
+4. Compilar e executar o módulo `:app` (API 31+ recomendado).
 
 ---
-*Desenvolvido com rigor técnico e atenção aos detalhes estéticos por Bianca.*
+*Desenvolvido com magia e rigor técnico por Bianca.*

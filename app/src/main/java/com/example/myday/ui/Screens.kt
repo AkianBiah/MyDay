@@ -28,9 +28,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.myday.ui.tasks.KawaiiAddTaskField
-import com.example.myday.ui.tasks.KawaiiTaskItem
-import com.example.myday.ui.tasks.TaskViewModel
+import com.example.myday.ui.routines.KawaiiAddTaskField
+import com.example.myday.ui.routines.KawaiiTaskItem
+import com.example.myday.ui.routines.RoutineViewModel
 
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myday.ui.theme.MyDayTheme
@@ -49,10 +49,13 @@ import androidx.compose.ui.text.font.FontWeight
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+import androidx.compose.ui.platform.LocalContext
+import com.example.myday.ui.ViewModelFactory
+
 @Composable
 fun HomeScreen(
-    weatherViewModel: WeatherViewModel = viewModel(),
-    languageViewModel: LanguageViewModel = viewModel()
+    languageViewModel: LanguageViewModel = viewModel(),
+    weatherViewModel: WeatherViewModel = viewModel(factory = ViewModelFactory(LocalContext.current))
 ) {
     val weatherState by weatherViewModel.weatherState.collectAsState()
     val currentTime by weatherViewModel.currentTime.collectAsState()
@@ -133,10 +136,10 @@ fun HomeScreen(
 
 @Composable
 fun TasksScreen(
-    viewModel: TaskViewModel = viewModel(),
-    languageViewModel: LanguageViewModel = viewModel()
+    languageViewModel: LanguageViewModel = viewModel(),
+    viewModel: RoutineViewModel = viewModel(factory = ViewModelFactory(LocalContext.current))
 ) {
-    val tasks by viewModel.tasks.collectAsState()
+    val tasks by viewModel.routines.collectAsState()
     var newTaskDescription by remember { mutableStateOf("") }
     val currentLanguage by languageViewModel.currentLanguage.collectAsState()
 
@@ -215,7 +218,7 @@ fun TasksScreen(
 }
 
 @Composable
-fun SettingsScreen(languageViewModel: LanguageViewModel = viewModel()) {
+fun SettingsScreen(languageViewModel: LanguageViewModel = viewModel(factory = ViewModelFactory(LocalContext.current))) {
     val currentLanguage by languageViewModel.currentLanguage.collectAsState()
 
     Scaffold(
