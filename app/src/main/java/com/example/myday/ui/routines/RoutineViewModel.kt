@@ -26,16 +26,15 @@ class RoutineViewModel(private val repository: RoutineRepository) : ViewModel() 
         }
     }
 
-    fun addTask(name: String) {
+    fun addRoutine(name: String, iconName: String, isWeekendOnly: Boolean = false) {
         if (name.isBlank()) return
         viewModelScope.launch {
-            repository.insert(Routine(name = name, iconName = "Star"))
+            repository.insert(Routine(name = name, iconName = iconName, isWeekendOnly = isWeekendOnly))
         }
     }
 
-    fun toggleTaskCompletion(id: Int) {
+    fun toggleRoutine(routine: Routine) {
         viewModelScope.launch {
-            val routine = routines.value.find { it.id == id } ?: return@launch
             val wasCompleted = routine.isCompleted
             repository.toggleCompletion(routine)
             if (!wasCompleted) {
@@ -44,9 +43,8 @@ class RoutineViewModel(private val repository: RoutineRepository) : ViewModel() 
         }
     }
 
-    fun deleteTask(id: Int) {
+    fun deleteRoutine(routine: Routine) {
         viewModelScope.launch {
-            val routine = routines.value.find { it.id == id } ?: return@launch
             repository.delete(routine)
         }
     }

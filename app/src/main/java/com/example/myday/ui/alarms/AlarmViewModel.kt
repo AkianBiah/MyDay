@@ -14,22 +14,20 @@ class AlarmViewModel(private val repository: AlarmRepository) : ViewModel() {
     val alarms: StateFlow<List<Alarm>> = repository.allAlarms
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    fun addAlarm(label: String, time: String, type: AlarmType) {
+    fun addAlarm(label: String, time: String, type: AlarmType, isWeekendOnly: Boolean = false) {
         viewModelScope.launch {
-            repository.insert(Alarm(label = label, time = time, type = type))
+            repository.insert(Alarm(label = label, time = time, type = type, isWeekendOnly = isWeekendOnly))
         }
     }
 
-    fun toggleAlarm(id: Int) {
+    fun toggleAlarm(alarm: Alarm) {
         viewModelScope.launch {
-            val alarm = alarms.value.find { it.id == id } ?: return@launch
             repository.update(alarm.copy(isEnabled = !alarm.isEnabled))
         }
     }
 
-    fun deleteAlarm(id: Int) {
+    fun deleteAlarm(alarm: Alarm) {
         viewModelScope.launch {
-            val alarm = alarms.value.find { it.id == id } ?: return@launch
             repository.delete(alarm)
         }
     }

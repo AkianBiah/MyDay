@@ -45,7 +45,7 @@ fun AlarmItem(
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = alarm.time,
+                    text = formatTo12h(alarm.time, languageViewModel),
                     style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                     color = if (alarm.isEnabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                 )
@@ -95,14 +95,15 @@ fun AlarmItem(
 fun AddAlarmDialog(
     languageViewModel: LanguageViewModel,
     onDismiss: () -> Unit,
-    onConfirm: (String, String, AlarmType) -> Unit
+    onConfirm: (String, String, AlarmType, Boolean) -> Unit
 ) {
     var label by remember { mutableStateOf("") }
     var selectedType by remember { mutableStateOf(AlarmType.Routine) }
+    var isWeekendOnly by remember { mutableStateOf(false) }
     val timePickerState = rememberTimePickerState(
         initialHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
         initialMinute = Calendar.getInstance().get(Calendar.MINUTE),
-        is24Hour = true
+        is24Hour = false
     )
 
     AlertDialog(
@@ -110,9 +111,9 @@ fun AddAlarmDialog(
         confirmButton = {
             TextButton(onClick = {
                 val formattedTime = String.format("%02d:%02d", timePickerState.hour, timePickerState.minute)
-                onConfirm(label.ifBlank { languageViewModel.getString(selectedType.name.lowercase()) }, formattedTime, selectedType)
+                onConfirm(label.ifBlank { languageViewModel.getString(selectedType.name.lowercase()) }, formattedTime, selectedType, isWeekendOnly)
             }) {
-                Text(languageViewModel.getString("add_task_btn"))
+                Text(languageViewModel.getString("add_alert_btn"))
             }
         },
         dismissButton = {
@@ -154,8 +155,31 @@ fun AddAlarmDialog(
                         )
                     }
                 }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("Weekend Only?", style = MaterialTheme.typography.bodyMedium)
+                    Switch(
+                        checked = isWeekendOnly,
+                        onCheckedChange = { isWeekendOnly = it }
+                    )
+                }
             }
         },
         shape = MaterialTheme.shapes.extraLarge
     )
+}
+
+fun formatTo12h(time: String, languageViewModel: LanguageViewModel): String {
+    return try {
+        val sdf24 = java.text.SimpleDateFormat("HH:mm", java.util.Locale.US)
+        val date = sdf24.parse(time) ?: return time
+        val sdf12 = java.text.SimpleDateFormat("h:mm a", languageViewModel.getLocale())
+        sdf12.format(date)
+    } catch (e: Exception) {
+        time
+    }
 }

@@ -28,6 +28,22 @@ class AlarmReceiver : BroadcastReceiver() {
         val alarmLabel = intent.getStringExtra("ALARM_LABEL") ?: "Celestial Alarm"
 
         showNotification(context, alarmId, alarmLabel)
+        
+        // Reschedule for next occurrence
+        if (alarmId != -1) {
+            rescheduleSingleAlarm(context, alarmId)
+        }
+    }
+
+    private fun rescheduleSingleAlarm(context: Context, alarmId: Int) {
+        val database = AppDatabase.getDatabase(context)
+        val repository = AlarmRepository(context, database.alarmDao())
+        CoroutineScope(Dispatchers.IO).launch {
+            val alarm = database.alarmDao().getAlarmById(alarmId)
+            if (alarm != null && alarm.isEnabled) {
+                repository.update(alarm) // repository.update will reschedule it
+            }
+        }
     }
 
     private fun showNotification(context: Context, alarmId: Int, label: String) {

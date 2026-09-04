@@ -10,5 +10,6 @@ data class Routine(
     val name: String,
     val iconName: String,
     val isCompleted: Boolean = false,
-    val lastCompletedDate: Long = 0L
+    val lastCompletedDate: Long = 0L,
+    val isWeekendOnly: Boolean = false
 )

@@ -11,7 +11,11 @@ class RoutineRepository(private val routineDao: RoutineDao) {
     suspend fun checkAndResetRoutines() {
         val routines = routineDao.getAllRoutines().first()
         val now = Calendar.getInstance()
+        val isWeekend = now.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || 
+                        now.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
+
         routines.forEach { routine ->
+            // Reset if it's a new day
             if (routine.isCompleted && !isSameDay(routine.lastCompletedDate, now.timeInMillis)) {
                 routineDao.updateRoutine(routine.copy(isCompleted = false))
             }

@@ -10,8 +10,8 @@ data class Alarm(
     val label: String,
     val time: String, // format "HH:mm"
     val isEnabled: Boolean = true,
-    val isWeekendOnly: Boolean = false,
-    val type: AlarmType = AlarmType.Routine
+    val type: AlarmType = AlarmType.Routine,
+    val isWeekendOnly: Boolean = false
 )
 
 enum class AlarmType {

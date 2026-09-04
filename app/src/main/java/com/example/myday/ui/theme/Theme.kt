@@ -12,53 +12,55 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import java.util.Calendar
 
-private val KawaiiDayColorScheme = lightColorScheme(
-    primary = PinkPrimary,
-    onPrimary = PinkOnPrimary,
-    primaryContainer = PinkPrimaryContainer,
-    onPrimaryContainer = PinkOnPrimaryContainer,
-    secondary = PinkSecondary,
-    onSecondary = PinkOnSecondary,
-    secondaryContainer = PinkSecondaryContainer,
-    onSecondaryContainer = PinkOnSecondaryContainer,
-    tertiary = PinkTertiary,
-    onTertiary = PinkOnTertiary,
-    tertiaryContainer = PinkTertiaryContainer,
-    onTertiaryContainer = PinkOnTertiaryContainer,
-    background = PinkBackground,
-    onBackground = PinkOnBackground,
-    surface = PinkSurface,
-    onSurface = PinkOnSurface,
-    surfaceVariant = PinkSurfaceVariant,
-    onSurfaceVariant = PinkOnSurfaceVariant,
+private val RoseQuartzColorScheme = lightColorScheme(
+    primary = RoseQuartzPrimary,
+    onPrimary = RoseQuartzOnPrimary,
+    primaryContainer = RoseQuartzPrimaryContainer,
+    onPrimaryContainer = RoseQuartzOnPrimaryContainer,
+    secondary = RoseQuartzSecondary,
+    onSecondary = RoseQuartzOnSecondary,
+    secondaryContainer = RoseQuartzSecondaryContainer,
+    onSecondaryContainer = RoseQuartzOnSecondaryContainer,
+    tertiary = RoseQuartzTertiary,
+    onTertiary = RoseQuartzOnTertiary,
+    tertiaryContainer = RoseQuartzTertiaryContainer,
+    onTertiaryContainer = RoseQuartzOnTertiaryContainer,
+    background = RoseQuartzBackground,
+    onBackground = RoseQuartzOnBackground,
+    surface = RoseQuartzSurface,
+    onSurface = RoseQuartzOnSurface,
+    surfaceVariant = RoseQuartzSurfaceVariant,
+    onSurfaceVariant = RoseQuartzOnSurfaceVariant,
+    outline = RoseQuartzOutline
 )
 
-private val DarkKawaiiColorScheme = darkColorScheme(
-    primary = DarkKawaiiPrimary,
-    onPrimary = DarkKawaiiOnPrimary,
-    primaryContainer = DarkKawaiiPrimaryContainer,
-    onPrimaryContainer = DarkKawaiiOnPrimaryContainer,
-    secondary = DarkKawaiiSecondary,
-    onSecondary = DarkKawaiiOnSecondary,
-    secondaryContainer = DarkKawaiiSecondaryContainer,
-    onSecondaryContainer = DarkKawaiiOnSecondaryContainer,
-    tertiary = DarkKawaiiTertiary,
-    onTertiary = DarkKawaiiOnTertiary,
-    tertiaryContainer = DarkKawaiiTertiaryContainer,
-    onTertiaryContainer = DarkKawaiiOnTertiaryContainer,
-    background = DarkKawaiiBackground,
-    onBackground = DarkKawaiiOnBackground,
-    surface = DarkKawaiiSurface,
-    onSurface = DarkKawaiiOnSurface,
-    surfaceVariant = DarkKawaiiSurfaceVariant,
-    onSurfaceVariant = DarkKawaiiOnSurfaceVariant,
+private val AmethystColorScheme = darkColorScheme(
+    primary = AmethystPrimary,
+    onPrimary = AmethystOnPrimary,
+    primaryContainer = AmethystPrimaryContainer,
+    onPrimaryContainer = AmethystOnPrimaryContainer,
+    secondary = AmethystSecondary,
+    onSecondary = AmethystOnSecondary,
+    secondaryContainer = AmethystSecondaryContainer,
+    onSecondaryContainer = AmethystOnSecondaryContainer,
+    tertiary = AmethystTertiary,
+    onTertiary = AmethystOnTertiary,
+    tertiaryContainer = AmethystTertiaryContainer,
+    onTertiaryContainer = AmethystOnTertiaryContainer,
+    background = AmethystBackground,
+    onBackground = AmethystOnBackground,
+    surface = AmethystSurface,
+    onSurface = AmethystOnSurface,
+    surfaceVariant = AmethystSurfaceVariant,
+    onSurfaceVariant = AmethystOnSurfaceVariant,
+    outline = AmethystOutline
 )
 
 @Composable
 fun MyDayTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = false, // Set to false to prioritize Kawaii theme
+    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     // Determine if it's day or night based on the 6 AM - 6 PM rule
@@ -72,15 +74,15 @@ fun MyDayTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        // Force Kawaii Night if it's night time, otherwise Kawaii Day
-        !isDayTime || darkTheme -> DarkKawaiiColorScheme
-        else -> KawaiiDayColorScheme
+        // If not dynamic, use our custom sophisticated palettes
+        darkTheme || !isDayTime -> AmethystColorScheme
+        else -> RoseQuartzColorScheme
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        shapes = KawaiiShapes,
+        shapes = AppShapes,
         content = content
     )
 }

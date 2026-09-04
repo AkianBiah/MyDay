@@ -2,42 +2,56 @@ package com.example.myday.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Kawaii Day (Soft Pink & Strawberry Milk)
-val PinkPrimary = Color(0xFFFFB7C5) // Soft Sakura Pink
-val PinkOnPrimary = Color(0xFFFFFFFF)
-val PinkPrimaryContainer = Color(0xFFFFE4E9) // Light Strawberry Milk
-val PinkOnPrimaryContainer = Color(0xFF6B1B2C)
-val PinkSecondary = Color(0xFFF8C8DC) // Pastel Pink
-val PinkOnSecondary = Color(0xFF4B2E39)
-val PinkSecondaryContainer = Color(0xFFFFF0F5) // Lavender Blush
-val PinkOnSecondaryContainer = Color(0xFF4B2E39)
-val PinkTertiary = Color(0xFFB4E1FF) // Baby Blue
-val PinkOnTertiary = Color(0xFF003354)
-val PinkTertiaryContainer = Color(0xFFE1F2FF)
-val PinkOnTertiaryContainer = Color(0xFF003354)
-val PinkBackground = Color(0xFFFFF8F9) // Almost White Pink
-val PinkOnBackground = Color(0xFF4B2E39)
-val PinkSurface = Color(0xFFFFF8F9)
-val PinkOnSurface = Color(0xFF4B2E39)
-val PinkSurfaceVariant = Color(0xFFFFEBF0)
-val PinkOnSurfaceVariant = Color(0xFF6B1B2C)
+/**
+ * Professional Material 3 Color Palettes for 'My Day'
+ * Day: Rose Quartz Sophistication
+ * Night: Amethyst & Midnight Elegance
+ */
 
-// Dark Kawaii (Deep Black/Purple & Neon Accents)
-val DarkKawaiiPrimary = Color(0xFFE08BFF) // Vibrant Purple
-val DarkKawaiiOnPrimary = Color(0xFF1A0033)
-val DarkKawaiiPrimaryContainer = Color(0xFF4B0082) // Indigo
-val DarkKawaiiOnPrimaryContainer = Color(0xFFF5E6FF)
-val DarkKawaiiSecondary = Color(0xFFFF49B1) // Neon Pink
-val DarkKawaiiOnSecondary = Color(0xFF33001A)
-val DarkKawaiiSecondaryContainer = Color(0xFF660033)
-val DarkKawaiiOnSecondaryContainer = Color(0xFFFFE6F2)
-val DarkKawaiiTertiary = Color(0xFF7DF9FF) // Electric Blue
-val DarkKawaiiOnTertiary = Color(0xFF003336)
-val DarkKawaiiTertiaryContainer = Color(0xFF004D50)
-val DarkKawaiiOnTertiaryContainer = Color(0xFFE6FFFF)
-val DarkKawaiiBackground = Color(0xFF0F0914) // Very Dark Purple/Black
-val DarkKawaiiOnBackground = Color(0xFFF5E6FF)
-val DarkKawaiiSurface = Color(0xFF1A1221) // Dark Purple Surface
-val DarkKawaiiOnSurface = Color(0xFFF5E6FF)
-val DarkKawaiiSurfaceVariant = Color(0xFF2E2436)
-val DarkKawaiiOnSurfaceVariant = Color(0xFFD67BFF)
+// --- Rose Quartz (Day) ---
+val RoseQuartzPrimary = Color(0xFF91426B)
+val RoseQuartzOnPrimary = Color(0xFFFFFFFF)
+val RoseQuartzPrimaryContainer = Color(0xFFFFD9E2)
+val RoseQuartzOnPrimaryContainer = Color(0xFF3B0020)
+
+val RoseQuartzSecondary = Color(0xFF74565F)
+val RoseQuartzOnSecondary = Color(0xFFFFFFFF)
+val RoseQuartzSecondaryContainer = Color(0xFFFFD9E2)
+val RoseQuartzOnSecondaryContainer = Color(0xFF2B151C)
+
+val RoseQuartzTertiary = Color(0xFF7C5635)
+val RoseQuartzOnTertiary = Color(0xFFFFFFFF)
+val RoseQuartzTertiaryContainer = Color(0xFFFFDDB0)
+val RoseQuartzOnTertiaryContainer = Color(0xFF2A1800)
+
+val RoseQuartzBackground = Color(0xFFFFFBFF)
+val RoseQuartzOnBackground = Color(0xFF201A1B)
+val RoseQuartzSurface = Color(0xFFFFFBFF)
+val RoseQuartzOnSurface = Color(0xFF201A1B)
+val RoseQuartzSurfaceVariant = Color(0xFFF2DDE1)
+val RoseQuartzOnSurfaceVariant = Color(0xFF514346)
+val RoseQuartzOutline = Color(0xFF837377)
+
+// --- Amethyst & Midnight (Night) ---
+val AmethystPrimary = Color(0xFFD694B8) // Slightly more amethyst than pure rose
+val AmethystOnPrimary = Color(0xFF4D1639)
+val AmethystPrimaryContainer = Color(0xFF672D50)
+val AmethystOnPrimaryContainer = Color(0xFFFFD9E2)
+
+val AmethystSecondary = Color(0xFFDFC0C8)
+val AmethystOnSecondary = Color(0xFF412B32)
+val AmethystSecondaryContainer = Color(0xFF594148)
+val AmethystOnSecondaryContainer = Color(0xFFFFD9E2)
+
+val AmethystTertiary = Color(0xFFE8C09D)
+val AmethystOnTertiary = Color(0xFF452B12)
+val AmethystTertiaryContainer = Color(0xFF5E4126)
+val AmethystOnTertiaryContainer = Color(0xFFFFDDB0)
+
+val AmethystBackground = Color(0xFF1D1B1E) // Midnight tone
+val AmethystOnBackground = Color(0xFFE8E0E3)
+val AmethystSurface = Color(0xFF1D1B1E)
+val AmethystOnSurface = Color(0xFFE8E0E3)
+val AmethystSurfaceVariant = Color(0xFF4F4447)
+val AmethystOnSurfaceVariant = Color(0xFFD3C2C5)
+val AmethystOutline = Color(0xFF9C8D91)

@@ -35,6 +35,9 @@ class WeatherRepository(
             emit(WeatherResult.Success(
                 WeatherInfo(
                     temperature = 22.5,
+                    feelsLike = 21.0,
+                    humidity = 60,
+                    windSpeed = 12.5,
                     condition = "Sunny",
                     iconUrl = "https://openweathermap.org/img/wn/01d@2x.png",
                     cityName = cityName
@@ -45,6 +48,9 @@ class WeatherRepository(
                 val response = api.getCurrentWeatherByCity(cityName, apiKey)
                 val info = WeatherInfo(
                     temperature = response.main.temp,
+                    feelsLike = response.main.feelsLike,
+                    humidity = response.main.humidity,
+                    windSpeed = response.wind.speed,
                     condition = response.weather.firstOrNull()?.main ?: "Unknown",
                     iconUrl = "https://openweathermap.org/img/wn/${response.weather.firstOrNull()?.icon}@2x.png",
                     cityName = response.name
