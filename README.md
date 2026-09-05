@@ -5,7 +5,7 @@ Transforme sua rotina em uma jornada mística. O **My Day** não é apenas um de
 ---
 
 ## 📑 Sobre o Projeto
-O **My Day** nasceu da necessidade de transformar o ato de acordar e gerenciar tarefas em algo encantador. Abandonando as interfaces genéricas, ele adota o **"Bianca Style"**: uma estética mística e profunda em tons de roxo, com elementos celestiais que se transformam ao longo do dia.
+O **My Day** nasceu da necessidade de transformar o ato de acordar e gerenciar tarefas em algo encantador. Abandonando as interfaces genéricas, ele adota uma estética mística e profunda em tons de roxo, com elementos celestiais que se transformam ao longo do dia.
 
 O coração do app é o seu **Sistema de Alarme Celestial**, que utiliza tecnologias nativas do Android para garantir que você nunca perca o ritmo, seja para tomar um remédio, começar sua leitura diária ou simplesmente despertar para um novo dia.
 
@@ -27,7 +27,7 @@ Vá além das listas de tarefas comuns:
 ### ☁️ Previsão do Tempo Mística
 Saiba se as estrelas estarão visíveis ou se as nuvens dominam o céu. Integração em tempo real com dados meteorológicos para planejar seu dia com precisão.
 
-### 🎨 Design "Bianca Style"
+### 🎨 Design
 - **UI Encantadora:** Floating Cards com sombras suaves e bordas arredondadas (32dp).
 - **Stickers Animados:** Elementos celestiais que trazem vida e personalidade à interface.
 - **Experiência Fluida:** Navegação moderna e gestos intuitivos.
