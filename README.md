@@ -13,7 +13,7 @@ O projeto utiliza componentes fundamentais do ecossistema Android para garantir 
 > **Modernização com Jetpack Compose & Room:** A interface é 100% **Jetpack Compose**, enquanto o armazenamento de rotinas e configurações é gerenciado via **Room Database**, garantindo persistência robusta.
 
 ## 🌟 Funcionalidades Principais
-- 🎨 **Bianca Style UI:** Interface encantadora com tons pastéis e místicos, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos.
+- 🎨 **Style UI:** Interface encantadora com tons pastéis e místicos, efeito de **Floating Cards** (sombras suaves e bordas de 32dp) e elementos decorativos.
 - ⏰ **Relógio Celestial Dinâmico:** Exibição do tempo no formato **12h (AM/PM)** com transições visuais que se adaptam ao horário:
     - **Dia:** Sol radiante e nuvens suaves.
     - **Noite:** Lua mística e estrelas cintilantes.
