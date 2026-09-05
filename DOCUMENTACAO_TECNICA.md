@@ -13,8 +13,8 @@ O aplicativo segue o padrão **MVVM**, expandido para lidar com serviços de sis
     - **AlarmManager:** Responsável pelo agendamento de eventos no sistema Android.
     - **BroadcastReceiver:** Escuta os gatilhos do sistema para iniciar notificações de áudio e atualizações de estado.
 
-## 3. Escolhas de Design (Bianca Style)
-A interface foi reformulada para o "Bianca Style Místico":
+## 3. Escolhas de Design 
+A interface foi reformulada para o "Style Místico":
 - **Paleta de Cores:** Foco em **Roxo Escuro** e tons de violeta, criando um ambiente noturno/celestial relaxante.
 - **Floating Cards & Glassmorphism:** Cards com bordas arredondadas (32dp) e leve transparência que flutuam sobre o fundo animado.
 - **Relógio Celestial:** O centro da experiência, alternando entre ícones de Sol (AM) e Lua (PM) conforme o horário, reforçando a conexão com o ciclo natural.
