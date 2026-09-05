@@ -1,7 +1,7 @@
 # 🌌 My Day - Celestial Alarm System 🌌
 
 ## 📑 Resumo do Projeto
-O **My Day** evoluiu de um simples gerenciador de tarefas para um **Sistema de Alarme Celestial** sofisticado para Android. Com uma estética "Bianca Style" (Roxo Escuro e Místico), a aplicação foca em rotinas avançadas e despertar personalizado, integrando o ciclo solar e lunar diretamente na experiência do usuário.
+O **My Day** evoluiu de um simples gerenciador de tarefas para um **Sistema de Alarme Celestial** sofisticado para Android. Com uma estética Roxo Escuro e Místico, a aplicação foca em rotinas avançadas e despertar personalizado, integrando o ciclo solar e lunar diretamente na experiência do usuário.
 
 ## 🏛 Decisão Arquitetural: Alarme e Rotinas
 O projeto utiliza componentes fundamentais do ecossistema Android para garantir precisão e confiabilidade nos despertadores.
